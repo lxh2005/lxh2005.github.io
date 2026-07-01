@@ -1,0 +1,26 @@
+﻿# Jekyll template files (not needed for static HTML)
+_config.yml
+_data/
+_includes/
+_layouts/
+_pages/
+_sass/
+assets/
+docs/
+google_scholar_crawler/
+Gemfile
+Gemfile.lock
+run_server.sh
+_site/
+
+# Personal files (not for public site)
+Research_proposal_for_RA_Application_to_NTU.pdf
+Xuanhui_CV.pdf
+Xuanhui Lin.jpg
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Copilot hub
+.copilot-hub/

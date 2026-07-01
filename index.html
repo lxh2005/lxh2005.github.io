@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xuanhui Lin - Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #faf9f7;
+            --color-surface: #ffffff;
+            --color-text: #1a1a2e;
+            --color-text-secondary: #4a4a6a;
+            --color-accent: #2563eb;
+            --color-accent-hover: #1d4ed8;
+            --color-border: #e5e5e5;
+            --color-tag-bg: #f0f4ff;
+            --color-tag-text: #2563eb;
+            --color-highlight: #fbbf24;
+            --font-serif: 'Source Serif 4', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --max-width: 900px;
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Subtle animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(37,99,235,0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(251,191,36,0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(37,99,235,0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Header / Navigation */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250,249,247,0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .header-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
+
+        .site-title {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Main content */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 2.5rem 2rem 4rem;
+        }
+
+        /* Hero section */
+        .hero {
+            display: flex;
+            gap: 2.5rem;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .hero-photo {
+            flex-shrink: 0;
+        }
+
+        .hero-photo img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--color-surface);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .hero-text .bio {
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            max-width: 560px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .social-links .email-link {
+            background: var(--color-tag-bg);
+            color: var(--color-tag-text);
+        }
+
+        .social-links .github-link {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.15s; }
+        .section:nth-child(4) { animation-delay: 0.2s; }
+        .section:nth-child(5) { animation-delay: 0.25s; }
+        .section:nth-child(6) { animation-delay: 0.3s; }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-accent);
+            display: inline-block;
+        }
+
+        /* Research interests */
+        .research-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .research-tag {
+            padding: 0.45rem 1rem;
+            background: var(--color-tag-bg);
+            color: var(--color-tag-text);
+            border-radius: 24px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(37,99,235,0.1);
+            transition: all 0.2s;
+        }
+
+        .research-tag:hover {
+            background: var(--color-accent);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        /* News */
+        .news-list {
+            list-style: none;
+        }
+
+        .news-item {
+            display: flex;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            align-items: baseline;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+            white-space: nowrap;
+            flex-shrink: 0;
+            min-width: 80px;
+        }
+
+        .news-text {
+            font-size: 0.92rem;
+        }
+
+        .news-badge {
+            display: inline-block;
+            background: #dcfce7;
+            color: #166534;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            margin-left: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* Publications */
+        .pub-card {
+            background: var(--color-surface);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--color-border);
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .pub-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+
+        .pub-title {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: var(--color-text);
+        }
+
+        .pub-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .pub-title a:hover {
+            color: var(--color-accent);
+        }
+
+        .pub-authors {
+            font-size: 0.88rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.4rem;
+        }
+
+        .pub-authors strong {
+            color: var(--color-text);
+        }
+
+        .pub-venue {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--color-accent);
+            font-weight: 500;
+        }
+
+        .pub-note {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            margin-top: 0.5rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .pub-placeholder {
+            text-align: center;
+            padding: 2rem;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            background: var(--color-surface);
+            border-radius: var(--radius);
+            border: 1px dashed var(--color-border);
+        }
+
+        /* Education & Experience */
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            bottom: 0.5rem;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--color-accent), var(--color-highlight));
+            border-radius: 1px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.55rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            border: 2px solid var(--color-bg);
+            box-shadow: 0 0 0 2px var(--color-accent);
+        }
+
+        .timeline-period {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .timeline-title a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        .timeline-title a:hover {
+            text-decoration: underline;
+        }
+
+        .timeline-desc {
+            font-size: 0.88rem;
+            color: var(--color-text-secondary);
+        }
+
+        /* Footer */
+        .site-footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.82rem;
+            color: var(--color-text-secondary);
+            border-top: 1px solid var(--color-border);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            .hero {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .hero-photo img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .hero-text h1 {
+                font-size: 1.7rem;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .research-tags {
+                justify-content: center;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .header-inner {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 1.5rem 1rem 3rem;
+            }
+
+            .timeline {
+                padding-left: 1.2rem;
+            }
+
+            .timeline-item::before {
+                left: -1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a href="/" class="site-title">Xuanhui Lin</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- Hero / About -->
+    <section class="section" id="about">
+        <div class="hero">
+            <div class="hero-photo">
+                <img src="images/profile.jpg" alt="Xuanhui Lin">
+            </div>
+            <div class="hero-text">
+                <h1>Xuanhui Lin</h1>
+                <p class="tagline">Undergraduate @ Lanzhou University &nbsp;|&nbsp; Research Intern @ NTU</p>
+                <p class="bio">
+                    I am an undergraduate student at Lanzhou University, majoring in Computer Science with a focus on Data Science. I am currently a research intern at Nanyang Technological University (NTU), Singapore. My research lies at the intersection of <strong>Evolutionary Computation</strong> and <strong>Machine Learning Robustness</strong>, focusing on EC-guided adversarial robustness and adversarial attacks on deep learning models.
+                </p>
+                <div class="social-links">
+                    <a href="mailto:lxh421708@gmail.com" class="email-link">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+                        Email
+                    </a>
+                    <a href="https://github.com/lxh2005" target="_blank" class="github-link">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Interests -->
+    <section class="section" id="research">
+        <h2 class="section-title">Research Interests</h2>
+        <div class="research-tags">
+            <span class="research-tag">Evolutionary Computation</span>
+            <span class="research-tag">EC-guided Robustness</span>
+            <span class="research-tag">Adversarial Attacks</span>
+            <span class="research-tag">Adversarial Robustness</span>
+            <span class="research-tag">Deep Learning</span>
+            <span class="research-tag">Data Science</span>
+        </div>
+    </section>
+
+    <!-- News -->
+    <section class="section" id="news">
+        <h2 class="section-title">News</h2>
+        <ul class="news-list">
+            <li class="news-item">
+                <span class="news-date">2025.09</span>
+                <span class="news-text">Started research internship at Nanyang Technological University (NTU), Singapore. <span class="news-badge">New</span></span>
+            </li>
+            <li class="news-item">
+                <span class="news-date">2024.09</span>
+                <span class="news-text">Joined Lanzhou University as an undergraduate student in Computer Science (Data Science).</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Publications -->
+    <section class="section" id="publications">
+        <h2 class="section-title">Publications</h2>
+        <div class="pub-placeholder">
+            <p>Publications will be listed here as they become available.</p>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section class="section" id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-period">2024.09 — present</div>
+                <div class="timeline-title"><a href="https://www.lzu.edu.cn/" target="_blank">Lanzhou University</a></div>
+                <div class="timeline-desc">B.S. in Computer Science (Data Science), School of Information Science and Engineering</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Internships -->
+    <section class="section" id="internships">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-period">2025.09 — present</div>
+                <div class="timeline-title"><a href="https://www.ntu.edu.sg/" target="_blank">Nanyang Technological University (NTU)</a></div>
+                <div class="timeline-desc">Research Intern — Working on EC-guided adversarial robustness</div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <p>&copy; 2026 Xuanhui Lin. Powered by GitHub Pages.</p>
+</footer>
+
+</body>
+</html>
